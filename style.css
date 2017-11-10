@@ -1,0 +1,113 @@
+body {
+  background: black;
+  color: white;
+  padding: 50px;
+}
+
+#title {
+  text-align: center;
+}
+
+.container {
+  margin: auto;
+  margin-top: 50px;
+  width: 600px;
+  height: 450px;
+}
+
+.row {
+  display: block;
+}
+
+.box {
+  height: 150px;
+  font-size: 3em;
+  text-align: center;
+  padding-top: 7%;
+}
+
+#box2 {
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+}
+
+#box4 {
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
+#box5 {
+  border: 2px solid white;
+}
+
+#box6 {
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
+#box8 {
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+}
+
+#choose {
+  position: relative;
+  background-color: white;
+  height: 450px;
+  width: 600px;
+  top: -450px;
+  margin: auto;
+  color: black;
+  text-align: center;
+  padding-top: 50px;
+  opacity: 0;
+  -webkit-transition: opacity 2s;
+  -moz-transition: opacity 2s;
+  -o-transition: opacity 2s;
+  transition: opacity 2s;
+}
+
+button {
+  margin: 5%;
+}
+
+#display-winner {
+  position: relative;
+  background-color: white;
+  height: 450px;
+  width: 600px;
+  top: -450px;
+  margin: auto;
+  color: black;
+  text-align: center;
+  font-size: 4em;
+  padding: 100px;
+  opacity: 0;
+  -webkit-transition: opacity 2s;
+  -moz-transition: opacity 2s;
+  -o-transition: opacity 2s;
+  transition: opacity 2s;
+}
+
+@media only screen and (max-width: 655px) {
+  .container {
+    height: 225px;
+    width: 300px;
+  }
+  #choose {
+    height: 225px;
+    width: 300px;
+    top: -225px;
+    padding-top: 10px;
+  }
+  .box {
+    height: 75px;
+    padding-top: 2%;
+  }
+  #display-winner {
+    height: 225px;
+    width: 300px;
+    top: -225px;
+    padding: 10px;
+  }
+}

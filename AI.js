@@ -71,7 +71,7 @@ function getWinner(arr, winner) {
   }
 }
 
-function winRow(arr) {
+function winRow(board) {
   for (var i = 0; i < wins.length; i++) {
     if (board[wins[i][0]] === "O" && board[wins[i][0]] === board[wins[i][1]]) {
       if (board[wins[i][2]] !== "0" && board[wins[i][2]] !== "X") {
@@ -149,7 +149,7 @@ function minimax(newBoard, player) {
     var move = {};
     move.index = newBoard[boxesLeft[i]];
     newBoard[boxesLeft[i]] = player;
-    if (player === human) {
+    if (player === computer) {
       var result = minimax(newBoard, human);
       move.score = result.score;
     } else {
@@ -180,8 +180,13 @@ function minimax(newBoard, player) {
   return moves[bestMove];
 }
 
-// Start game
+function randomNumber() {
+  var randomNum = Math.floor(Math.random() * movesLeft.length);
+  boxToPlay = document.getElementById("box" + movesLeft[randomNum]);
+  return makeMove();
+}
 
+// Start game
 window.onload = function() {
   choose.style.opacity = 1;
 };
@@ -218,7 +223,6 @@ var playerMove = function() {
         board[humanMove] = human;
         movesLeft = filtered(board);
         console.log(board);
-        console.log(storeHumanMove);
         getWinner(storeHumanMove, human);
         getComputerMove();
       }
@@ -241,15 +245,20 @@ var getComputerMove = function() {
     board[computerMove] = computer;
     movesleft = filtered(board);
     console.log(board);
-    console.log(storeComputerMove);
     getWinner(storeComputerMove, computer);
   }
 
   if (game === true) {
-    if (computerCount === 0 && storeHumanMove.indexOf(4) < 0) {
-      boxToPlay = document.getElementById("box4");
-      console.log("boxToPlay = " + boxToPlay);
-      makeMove();
+    if (computerCount === 0) {
+      if (storeHumanMove.indexOf(4) < 0) {
+        boxToPlay = document.getElementById("box4");
+        console.log("boxToPlay = " + boxToPlay.id);
+        makeMove();
+      } else {
+        var randomNum = Math.floor(Math.random() * movesLeft.length);
+        boxToPlay = document.getElementById("box" + movesLeft[randomNum]);
+        makeMove();
+      }
     } else {
       var minimaxMove = minimax(board, computer);
       boxToPlay = document.getElementById("box" + minimaxMove.index);

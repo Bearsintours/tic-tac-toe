@@ -4,8 +4,17 @@ body {
   padding: 50px;
 }
 
+#tic-tac-toe {
+  height: 600px;
+}
+
 #title {
   text-align: center;
+  font-family: 'Permanent Marker', cursive;
+}
+
+#title h1 {
+  font-size: 3em;
 }
 
 .container {
@@ -26,26 +35,26 @@ body {
   padding-top: 7%;
 }
 
-#box2 {
+#box1 {
   border-left: 2px solid white;
   border-right: 2px solid white;
 }
 
-#box4 {
+#box3 {
   border-top: 2px solid white;
   border-bottom: 2px solid white;
 }
 
-#box5 {
+#box4 {
   border: 2px solid white;
 }
 
-#box6 {
+#box5 {
   border-top: 2px solid white;
   border-bottom: 2px solid white;
 }
 
-#box8 {
+#box7 {
   border-left: 2px solid white;
   border-right: 2px solid white;
 }
@@ -59,6 +68,7 @@ body {
   margin: auto;
   color: black;
   text-align: center;
+  font-family: 'Permanent Marker', cursive;
   padding-top: 50px;
   opacity: 0;
   -webkit-transition: opacity 2s;
@@ -81,6 +91,7 @@ button {
   color: black;
   text-align: center;
   font-size: 4em;
+  font-family: 'Permanent Marker', cursive;
   padding: 100px;
   opacity: 0;
   -webkit-transition: opacity 2s;
@@ -88,6 +99,8 @@ button {
   -o-transition: opacity 2s;
   transition: opacity 2s;
 }
+
+/* Media queries */
 
 @media only screen and (max-width: 655px) {
   .container {
@@ -100,6 +113,9 @@ button {
     top: -225px;
     padding-top: 10px;
   }
+  #choose h1 {
+    font-size: 1.5em;
+  }
   .box {
     height: 75px;
     padding-top: 2%;
@@ -109,5 +125,8 @@ button {
     width: 300px;
     top: -225px;
     padding: 10px;
+  }
+  #display-winner h1 {
+    font-size: 1.5em;
   }
 }

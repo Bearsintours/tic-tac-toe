@@ -38,12 +38,14 @@ var computerCount = 0;
 
 // Helper functions
 
+// Filter board to get all the possible moves left
 function filtered(board) {
   return board.filter(function(el) {
     return el !== "X" && el !== "O";
   })
 }
 
+// Check for win : if 3 in a row --> it's a win & print winner / else check for a draw
 function getWinner(arr, winner) {
   if (arr.indexOf(0) !== -1 && arr.indexOf(1) !== -1 && arr.indexOf(2) !== -1 ||
     arr.indexOf(3) !== -1 && arr.indexOf(4) !== -1 && arr.indexOf(5) !== -1 ||
@@ -71,6 +73,7 @@ function getWinner(arr, winner) {
   }
 }
 
+// Check if 2 in a row : if human has 2 in a row -> block, if computer has 2 in a row -> 3rd move wins (need to be implemented)
 function winRow(board) {
   for (var i = 0; i < wins.length; i++) {
     if (board[wins[i][0]] === "O" && board[wins[i][0]] === board[wins[i][1]]) {
@@ -95,6 +98,7 @@ function winRow(board) {
   }
 }
 
+// Function to check for a win (used for minimax) / if winner --> return true
 function winning(board, player) {
   if ((board[0] == player && board[1] == player && board[2] == player) ||
     (board[3] == player && board[4] == player && board[5] == player) ||
@@ -110,6 +114,7 @@ function winning(board, player) {
   }
 }
 
+// Reset game and refresh for new game
 function reset() {
   board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
   storeComputerMove = [];
@@ -128,6 +133,14 @@ function reset() {
   }, 5000)
 }
 
+// Function to get random number (used for first computer move if human played box4)
+function randomNumber() {
+  var randomNum = Math.floor(Math.random() * movesLeft.length);
+  boxToPlay = document.getElementById("box" + movesLeft[randomNum]);
+  return makeMove();
+}
+
+// Function using Minimax algorithm (inspired by https://medium.freecodecamp.org/how-to-make-your-tic-tac-toe-game-unbeatable-by-using-the-minimax-algorithm-9d690bad4b37)
 function minimax(newBoard, player) {
   var boxesLeft = filtered(newBoard);
   if (winning(newBoard, human)) {
@@ -180,17 +193,17 @@ function minimax(newBoard, player) {
   return moves[bestMove];
 }
 
-function randomNumber() {
-  var randomNum = Math.floor(Math.random() * movesLeft.length);
-  boxToPlay = document.getElementById("box" + movesLeft[randomNum]);
-  return makeMove();
-}
+// End helper function
+
 
 // Start game
+
+// Choose X or O message fade in on page load
 window.onload = function() {
   choose.style.opacity = 1;
 };
 
+// Choose X or O and on click message fades out
 var chooseSide = function() {
   game = true;
   x.addEventListener("click", function() {
@@ -212,6 +225,7 @@ var chooseSide = function() {
   });
 }
 
+// On box click: prints and stores player move, updates board, checks for winner and triggers computer move
 var playerMove = function() {
   for (var i = 0; i < box.length; i++) {
     box[i].addEventListener('click', function(e) {
@@ -230,10 +244,10 @@ var playerMove = function() {
   }
 }
 
-
+// Computer move
 var getComputerMove = function() {
   var id;
-
+  //function to print and store computer move, update board and check for winner
   function makeMove() {
     var printComputerMove = setTimeout(function() {
       boxToPlay.innerHTML = computer;
@@ -250,6 +264,7 @@ var getComputerMove = function() {
 
   if (game === true) {
     if (computerCount === 0) {
+      // on first move : choose box4 or random box if human already chose box4
       if (storeHumanMove.indexOf(4) < 0) {
         boxToPlay = document.getElementById("box4");
         console.log("boxToPlay = " + boxToPlay.id);
@@ -259,6 +274,7 @@ var getComputerMove = function() {
         boxToPlay = document.getElementById("box" + movesLeft[randomNum]);
         makeMove();
       }
+      //  After first move : use function minimax to get best move possible
     } else {
       var minimaxMove = minimax(board, computer);
       boxToPlay = document.getElementById("box" + minimaxMove.index);
@@ -267,6 +283,7 @@ var getComputerMove = function() {
     }
   }
 }
+
 
 chooseSide();
 playerMove();

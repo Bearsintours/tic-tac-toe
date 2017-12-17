@@ -1,5 +1,3 @@
-// Global variables
-
 var choose = document.getElementById("choose");
 var displayWinner = document.getElementById("display-winner");
 var x = document.getElementById("x");

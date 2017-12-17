@@ -3,11 +3,11 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker">
+  <link rel="stylesheet" href="style.css">
   <title>Tic Tac Toe Game</title>
 </head>
 
@@ -19,19 +19,19 @@
     </div>
     <div class="container">
       <div class="row">
+        <div id="box0" class="box col-xs-4"></div>
         <div id="box1" class="box col-xs-4"></div>
         <div id="box2" class="box col-xs-4"></div>
-        <div id="box3" class="box col-xs-4"></div>
       </div>
       <div class="row">
+        <div id="box3" class="box col-xs-4"></div>
         <div id="box4" class="box col-xs-4"></div>
         <div id="box5" class="box col-xs-4"></div>
-        <div id="box6" class="box col-xs-4"></div>
       </div>
       <div class="row">
+        <div id="box6" class="box col-xs-4"></div>
         <div id="box7" class="box col-xs-4"></div>
         <div id="box8" class="box col-xs-4"></div>
-        <div id="box9" class="box col-xs-4"></div>
       </div>
     </div>
 
@@ -44,7 +44,9 @@
     <div id="display-winner" class="hidden">
     </div>
   </div>
-  <script src="./data.js"></script>
+  <script rel="stylesheet" src="./AI.js"></script>
+  <!-- <script rel="stylesheet" src="./data.js"></script> -->
+
 </body>
 
 </html>
